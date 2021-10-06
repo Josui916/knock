@@ -9,7 +9,6 @@ func knock0() {
 	s := string("stressed")
 	k := []string{}
 	for i := 7; i >= 0; i-- {
-		//fmt.Println(string(s[i]))
 		k = append(k, string(s[i]))
 	}
 	fmt.Println(strings.Join(k, ""))
@@ -17,22 +16,13 @@ func knock0() {
 
 func knock1() {
 	s := "パタトクカシーー"
-	//fmt.Println(string([]rune(s)))
 	k := []rune(s)
 	m := []rune{k[0], k[2], k[4], k[6]}
 	fmt.Println(string(m))
-
-	/*
-		var k []string
-		k = append(k, string(s[2]), string(s[4]), string(s[6]), string(s[8]))
-		fmt.Println(string(s[2]))
-		fmt.Println(strings.Join(k, ""))
-	*/
 }
 
 func knock2() {
 	s := "パタトクカシーー"
-	//fmt.Println(string([]rune(s)))
 	k := []rune(s)
 	m := []rune{k[0], k[2], k[4], k[6]}
 	M := string(m)
@@ -44,7 +34,6 @@ func knock3() {
 	s := "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
 	k := strings.Split(s, " ")
 	var m []string
-	//fmt.Println(k)
 
 	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
 	for _, str := range k {
@@ -64,7 +53,6 @@ func knock4() {
 	s := "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can."
 	k := strings.Split(s, " ")
 	var m []string
-	//fmt.Println(k)
 
 	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
 	for _, str := range k {
@@ -98,10 +86,26 @@ func knock4() {
 
 }
 
+func knock5(v string, n int) {
+	k := strings.Split(v, " ")
+	var m []string
+	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
+	for _, str := range k {
+		m = append(m, str)
+	}
+	//ここまででとりあえず与えられた文字列を単語ごとに分けてmというスライスに格納することはできた
+	//残るは、このスライスをnずつ束ねるように設計すること
+	for i := 0; i < len(m)-1; i++ {
+		fmt.Println(m[i : i+n])
+	}
+
+}
+
 func main() {
 	knock0()
 	knock1()
 	knock2()
 	knock3()
 	knock4()
+	knock5("I am an NLPer", 2)
 }
