@@ -39,17 +39,33 @@ func knock2() {
 	n := []rune{k[1], k[3], k[5], k[7]}
 	N := string(n)
 	fmt.Println(M + N)
+}
+func knock3() {
+	s := "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
+	k := strings.Split(s, " ")
+	var m []string
+	//fmt.Println(k)
 
-	/*
-		var k []string
-		k = append(k, string(s[2]), string(s[4]), string(s[6]), string(s[8]))
-		fmt.Println(string(s[2]))
-		fmt.Println(strings.Join(k, ""))
-	*/
+	//ここちょっと理解浅い
+	for _, str := range k {
+		//fmt.Printf("[%s]", str)
+		m = append(m, str)
+	}
+
+	//fmt.Println(m)
+
+	var n []int
+
+	for i := 0; i < 15; i++ {
+		p := len(m[i])
+		n = append(n, p)
+	}
+	fmt.Println(n)
 }
 
 func main() {
 	knock0()
 	knock1()
 	knock2()
+	knock3()
 }
