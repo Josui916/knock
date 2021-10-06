@@ -46,16 +46,14 @@ func knock3() {
 	var m []string
 	//fmt.Println(k)
 
-	//ここちょっと理解浅い
+	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
 	for _, str := range k {
 		//fmt.Printf("[%s]", str)
 		m = append(m, str)
 	}
 
-	//fmt.Println(m)
-
+	//上で単語ごとのスライスにしたものをそれぞれ長さ出力したのをそれぞれアペンドでnというスライスに格納している。
 	var n []int
-
 	for i := 0; i < 15; i++ {
 		p := len(m[i])
 		n = append(n, p)
