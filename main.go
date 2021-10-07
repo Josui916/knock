@@ -152,23 +152,22 @@ func knock8(v string) {
 	}
 	//ここまででとりあえず与えられた文字列を単語ごとに分けてmというスライスに格納した
 
-	for i := 0; i < len(m)-1; i++ {
+	for i := 0; i < len(m); i++ {
 		var n string = string(m[i])
 		if len(n) > 4 {
 
 			var s int = int(len(n) - 2)
-			var N string = string(n[1:s])
+			var N string = string(n[1 : s+1])
 			//shuffle関数自体はおそらくbyteとしてまとまってる単語列にしか対応してない。
 			//なので、各単語を文章化してスペース開けたものをシャッフルに処理してもらうか、単語レベルで処理してくれる関数を見つけるか
 			//あるいは順番をあてがうか
 
 			Ns := strings.Split(N, "")
 			u := len(Ns)
-			for c := 0; c < u-1; c++ {
+			for c := 0; c < u+2; c++ {
 				//fmt.Printf("%s ", slice[c])
 				//fmt.Println(reflect.TypeOf(slice[c])) //取り出した文字の型を示す。
 			}
-			fmt.Println("")
 			//ここまでで単語をスライスに格納するところまでは行けた。
 			//以下でそれを、1.ランダムに動かす
 
@@ -184,21 +183,14 @@ func knock8(v string) {
 			w = append(w, v)
 			w = append(w, string(n[s+1]))
 			//ここまでで、混ぜた文字と元の文字をwっていうスライスにぶちこむことに成功
-
-			fmt.Println(w)
-			//joinを使って、元の文字列と結合
-			//v0 := []string{string(n[0])}
-			//vi := []string{string(n[s+1])}
-			//w0 := strings.Join(v0, v)
-			//w1 := strings.Join(w0,vi)
-			//fmt.Println(w0)
-			//fmt.Println(w1)
-			//すでにランダムに動かせてるから、単語に結合したい。　2.元の単語と結合して単語にする
-
+			//これを1文字に直したい
+			m[i] = strings.Join(w, "")
+			//fmt.Println(m[i])
+			//joinを使って、元の文字列と結合した
 		}
 
-		//fmt.Println(n)
 	}
+	fmt.Println(m)
 
 }
 
