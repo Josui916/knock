@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"math/rand"
 	"strings"
+
+	mapset "github.com/deckarep/golang-set"
 )
 
 func knock0() {
@@ -108,7 +110,7 @@ func knock5(v string, n int) {
 
 func knock6(x, y string, n int) {
 	//1単語に対する文字n-gram
-	var X, Y []string
+	var X, Y []interface{}
 	for i := 0; i < len(x)-1; i++ {
 		X = append(X, x[i:i+n])
 	}
@@ -116,11 +118,18 @@ func knock6(x, y string, n int) {
 		Y = append(Y, y[i:i+n])
 	}
 	//ここまででn-gramの行ごとにスライスに格納するのはできた。
-	fmt.Println(X, Y) //↑の確認
-	//ここから和集合Z1、積集合Z2、差集合Z3
+	//X,Yを[]interface{}に格納すれば、union関数が使えそう。
 
-	//一旦パス
+	XX := mapset.NewSetFromSlice(X)
+	YY := mapset.NewSetFromSlice(Y)
 
+	Z1 := XX.Union(YY)
+	Z2 := XX.Intersect(YY)
+	Z3 := XX.Difference(YY)
+
+	fmt.Println(Z1)
+	fmt.Println(Z2)
+	fmt.Println(Z3)
 }
 
 func knock7(x int, y string, z float64) {
@@ -138,7 +147,7 @@ func cipher(i interface{}) {
 	}
 }
 
-func knock8(v string) {
+func knock9(v string) {
 	k := strings.Split(v, " ")
 	var m []string
 	m = append(m, k...)
@@ -180,7 +189,6 @@ func knock8(v string) {
 			//fmt.Println(m[i])
 			//joinを使って、元の文字列と結合した
 		}
-
 	}
 	fmt.Println(m)
 
@@ -196,6 +204,7 @@ func main() {
 	knock5("I am an NLPer", 2)
 	knock6("paraparaparadise", "paragraph", 2)
 	knock7(12, "気温", 22.4)
+
 	cipher("paraparaparadise")
-	knock8("I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind.")
+	knock9("I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind.")
 }
