@@ -36,11 +36,13 @@ func knock3() {
 	k := strings.Split(s, " ")
 	var m []string
 
-	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
-	for _, str := range k {
-		//fmt.Printf("[%s]", str)
-		m = append(m, str)
-	}
+	m = append(m, k...)
+	/*
+		for _, v := range k {
+			m = append(m, v)
+			//should replace loop with m = append(m, k...) (S1011)
+		}
+	*/
 
 	//上で単語ごとのスライスにしたものをそれぞれ長さ出力したのをそれぞれアペンドでnというスライスに格納している。
 	var n []int
@@ -55,11 +57,7 @@ func knock4() {
 	k := strings.Split(s, " ")
 	var m []string
 
-	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
-	for _, str := range k {
-		//fmt.Printf("[%s]", str)
-		m = append(m, str)
-	}
+	m = append(m, k...)
 	n := make(map[int]string)
 
 	for i := 0; i < 20; i++ {
@@ -92,10 +90,7 @@ func knock5(v string, n int) {
 	//まず単語n-gram
 	k := strings.Split(v, " ")
 	var m []string
-	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
-	for _, str := range k {
-		m = append(m, str)
-	}
+	m = append(m, k...)
 	//ここまででとりあえず与えられた文字列を単語ごとに分けてmというスライスに格納した
 	//以下で、このスライスをnずつ束ねた
 	for i := 0; i < len(m)-1; i++ {
@@ -129,7 +124,7 @@ func knock6(x, y string, n int) {
 }
 
 func knock7(x int, y string, z float64) {
-	fmt.Printf("%v時の%vは%v", x, y, z)
+	fmt.Printf("%v時の%vは%v \n", x, y, z)
 }
 
 func cipher(i interface{}) {
@@ -146,10 +141,7 @@ func cipher(i interface{}) {
 func knock8(v string) {
 	k := strings.Split(v, " ")
 	var m []string
-	//ここちょっと理解浅いがstringの単語ごとのスライスに直してる。
-	for _, str := range k {
-		m = append(m, str)
-	}
+	m = append(m, k...)
 	//ここまででとりあえず与えられた文字列を単語ごとに分けてmというスライスに格納した
 
 	for i := 0; i < len(m); i++ {
@@ -195,16 +187,15 @@ func knock8(v string) {
 }
 
 func main() {
-	/*
-		knock0()
-		knock1()
-		knock2()
-		knock3()
-		knock4()
-		knock5("I am an NLPer", 2)
-		knock6("paraparaparadise", "paragraph", 2)
-		knock7(12, "気温", 22.4)
-		cipher("paraparaparadise")
-	*/
+
+	knock0()
+	knock1()
+	knock2()
+	knock3()
+	knock4()
+	knock5("I am an NLPer", 2)
+	knock6("paraparaparadise", "paragraph", 2)
+	knock7(12, "気温", 22.4)
+	cipher("paraparaparadise")
 	knock8("I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind.")
 }
