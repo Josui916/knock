@@ -136,15 +136,25 @@ func knock7(x int, y string, z float64) {
 	fmt.Printf("%v時の%vは%v \n", x, y, z)
 }
 
-func cipher(i interface{}) {
-	switch v := i.(type) {
-	case string:
-		fmt.Println( /*func219的な何か*/ (v))
-		//一旦パス
+func cipher(v string) {
+	//この時すでにv[i]はbyteコード？になってる
+	//スライスに格納した文字を1文字ずつrangeで処理して、小文字はasciiの219であるブロックに置き換えたい
 
-	default:
-		fmt.Println(v)
+	//var s []string
+	var t []string
+	for i := 0; i <= len(v)-1; i++ { //vの文字数をうまく出力したい
+		//fmt.Println(v[i])
+		//ここまでの出力は正常なので、このifのところが問題ありそう
+
+		if v[i] >= 97 && v[i] <= 122 {
+			t = append(t, string(219))
+			//v[i] := 219 //文字コードを文字に起こす処理
+		} else {
+			t = append(t, string(v[i]))
+		}
 	}
+	fmt.Println(strings.Join(t, ""))
+
 }
 
 func knock9(v string) {
@@ -195,7 +205,6 @@ func knock9(v string) {
 }
 
 func main() {
-
 	knock0()
 	knock1()
 	knock2()
@@ -204,7 +213,6 @@ func main() {
 	knock5("I am an NLPer", 2)
 	knock6("paraparaparadise", "paragraph", 2)
 	knock7(12, "気温", 22.4)
-
-	cipher("paraparaparadise")
+	cipher("parAparDSDASGadisGe")
 	knock9("I couldn't believe that I could actually understand what I was reading : the phenomenal power of the human mind.")
 }
