@@ -39,12 +39,6 @@ func knock3() {
 	var m []string
 
 	m = append(m, k...)
-	/*
-		for _, v := range k {
-			m = append(m, v)
-			//should replace loop with m = append(m, k...) (S1011)
-		}
-	*/
 
 	//上で単語ごとのスライスにしたものをそれぞれ長さ出力したのをそれぞれアペンドでnというスライスに格納している。
 	var n []int
@@ -170,14 +164,11 @@ func knock9(v string) {
 			var s int = int(len(n) - 2)
 			var N string = string(n[1 : s+1])
 			//shuffle関数自体はおそらくbyteとしてまとまってる単語列にしか対応してない。
-			//なので、各単語を文章化してスペース開けたものをシャッフルに処理してもらうか、単語レベルで処理してくれる関数を見つけるか
-			//あるいは順番をあてがうか
+			//なので、各単語を文章化してスペース開けたものをシャッフルに処理してもらう
 
 			Ns := strings.Split(N, "")
 			u := len(Ns)
 			for c := 0; c < u+2; c++ {
-				//fmt.Printf("%s ", slice[c])
-				//fmt.Println(reflect.TypeOf(slice[c])) //取り出した文字の型を示す。
 			}
 			//ここまでで単語をスライスに格納するところまでは行けた。
 			//以下でそれを、1.ランダムに動かす
@@ -196,7 +187,6 @@ func knock9(v string) {
 			//ここまでで、混ぜた文字と元の文字をwっていうスライスにぶちこむことに成功
 			//これを1文字に直したい
 			m[i] = strings.Join(w, "")
-			//fmt.Println(m[i])
 			//joinを使って、元の文字列と結合した
 		}
 	}
