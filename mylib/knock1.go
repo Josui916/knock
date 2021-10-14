@@ -138,7 +138,6 @@ func Cipher(v string) {
 	var t []string
 	for i := 0; i <= len(v)-1; i++ { //vの文字数をうまく出力したい
 		//fmt.Println(v[i])
-		//ここまでの出力は正常なので、このifのところが問題ありそう
 
 		if v[i] >= 97 && v[i] <= 122 {
 			t = append(t, string(219))
@@ -178,7 +177,6 @@ func Knock9(v string) {
 			})
 
 			v = strings.Join(Ns, "")
-			//fmt.Printf("%T, %v", v, v)
 			//一旦v含めてsliceにぶちこむ
 			w := []string{}
 			w = append(w, string(n[0]))
